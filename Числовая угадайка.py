@@ -5,9 +5,7 @@ import random
 
 def is_valid(answer):
     if answer.isdigit():
-        if 1 <= int(answer) <= right_value:
-            return True
-    return False
+        return 1 <= int(answer) <= right_value
 
 
 def agreement(agree):
