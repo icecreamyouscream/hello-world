@@ -2,9 +2,24 @@
 
 import random
 
+
+def is_valid(answer):
+    if answer.isdigit():
+        if 1 <= int(answer) <= right_value:
+            return True
+    return False
+
+
+def agreement(agree):
+    return agree != 'Нет' and agree != 'Да'
+
+
 print('Добро пожаловать в числовую угадайку!')
 print('Хотите сыграть? Введите "Да" или "Нет"')
 agree = input()
+if agreement(agree):
+    print('Необходимо ввести слова "Да" или "Нет" с заглавной буквы')
+    agree = input()
 if agree == 'Нет':
     print('Ничего страшного, просто вам это не интересно :)')
 while agree == 'Да':
@@ -12,15 +27,6 @@ while agree == 'Да':
     right_value = int(input())
     n = random.randint(1, right_value)
     print('Тогда приступим! Введите число:')
-
-
-    def is_valid(answer):
-        if answer.isdigit():
-            if 1 <= int(answer) <= right_value:
-                return True
-        return False
-
-
     answer = input()
     counter = 0
     while is_valid(answer) is not True:
@@ -41,6 +47,9 @@ while agree == 'Да':
             break
     print('Хотите сыграть еще разок? Введите "Да" или "Нет":')
     agree = input()
+    if agreement(agree):
+        print('Необходимо ввести слова "Да" или "Нет" с большой буквы')
+        agree = input()
     if agree == 'Нет':
         print('Спасибо, что играли в числовую угадайку!')
         break
