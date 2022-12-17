@@ -9,18 +9,18 @@ def is_valid(answer):  # функция, проверяющая число ли 
 
 
 def agreement(agree):  # функция проверки ввода Да/Нет
-    return agree != 'Нет' and agree != 'Да'
+    return agree.lower() != 'нет' and agree.lower() != 'да'
 
 
 print('Добро пожаловать в числовую угадайку!')
 print('Хотите сыграть? Введите "Да" или "Нет"')
 agree = input()
 while agreement(agree):  # пока вводится неверное значение
-    print('Необходимо ввести слова "Да" или "Нет" с заглавной буквы')
+    print('Введите "Да" или "Нет"')
     agree = input()
-if agree == 'Нет':
+if agree.lower() == 'нет':
     print('Ничего страшного, просто вам это не интересно :)')
-while agree == 'Да':
+while agree.lower() == 'да':
     print('До какого числа вы хотите угадывать?')
     right_value = int(input())  # правый предел рандомного числа
     n = random.randint(1, right_value)  # задается рандомное число от 1 до введенного игроком правого предела
@@ -46,7 +46,7 @@ while agree == 'Да':
     print('Хотите сыграть еще разок? Введите "Да" или "Нет":')
     agree = input()
     while agreement(agree):
-        print('Необходимо ввести слова "Да" или "Нет" с большой буквы')
+        print('Введите "Да" или "Нет"')
         agree = input()
-    if agree == 'Нет':
+    if agree.lower == 'нет':
         print('Спасибо, что играли в числовую угадайку!')
