@@ -15,7 +15,7 @@ def agreement(agree):
 print('Добро пожаловать в числовую угадайку!')
 print('Хотите сыграть? Введите "Да" или "Нет"')
 agree = input()
-if agreement(agree):
+while agreement(agree):
     print('Необходимо ввести слова "Да" или "Нет" с заглавной буквы')
     agree = input()
 if agree == 'Нет':
@@ -45,7 +45,7 @@ while agree == 'Да':
             break
     print('Хотите сыграть еще разок? Введите "Да" или "Нет":')
     agree = input()
-    if agreement(agree):
+    while agreement(agree):
         print('Необходимо ввести слова "Да" или "Нет" с большой буквы')
         agree = input()
     if agree == 'Нет':
