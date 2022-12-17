@@ -50,4 +50,3 @@ while agree == 'Да':
         agree = input()
     if agree == 'Нет':
         print('Спасибо, что играли в числовую угадайку!')
-        break
