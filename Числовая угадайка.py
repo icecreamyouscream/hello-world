@@ -28,8 +28,7 @@ while agree.lower() == 'да':
     answer = input()  # считывается введенный ответ
     counter = 0  # счетчик попыток
     while is_valid(answer) is False:  # пока вводятся неверные значения
-        print('А может быть все-таки введем целое число от 1 до ', right_value, '?', sep='')
-        answer = input()  # считывается новый ответ
+        answer = input(f'А может быть все-таки введем целое число от 1 до {right_value}?\n')
     while is_valid(answer):  # пока введено верное значение
         if int(answer) > n:
             print('Ваше число больше загаданного, попробуйте еще разок')
@@ -40,8 +39,7 @@ while agree.lower() == 'да':
             counter += 1  # счетчик попыток +1
             answer = input()  # считывается новый ответ
         elif int(answer) == n:
-            print('Вы угадали, поздравляем!')
-            print('Попыток:', counter)
+            print(f'Вы угадали {counter} попыток, поздравляем!')
             break
     print('Хотите сыграть еще разок? Введите "Да" или "Нет":')
     agree = input()
