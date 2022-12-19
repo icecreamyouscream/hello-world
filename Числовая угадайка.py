@@ -46,28 +46,29 @@ def game():
     print(f'Поздравляем! Вы угадали загаданное число с {counter} попыток!')
 
 
-print('Добро пожаловать в числовую угадайку!')
-print('Хотите сыграть? Введите "Да" или "Нет":')
-agree = input()
-while agreement(agree) is None:
-    agree = input('Необходимо ввести "Да" или "Нет".\n')
-if agreement(agree) is False:
-    print('Ничего страшного, вы просто случайно здесь оказались :)')
-if agreement(agree):
-    print('Хорошо, тогда начнем!')
-    q = max_range()
-    n = random.randint(1, q)
-    while True:
-        game()
-        print('Хотите сыграть еще разок? Введите "Да" или "Нет":')
-        agree = input()
-        while agreement(agree) is None:
-            agree = input('Необходимо ввести "Да" или "Нет".\n')
-        if agreement(agree) is False:
-            print('Спасибо, что играли в числовую угадайку! Всего хорошего :)')
-            break
-        if agreement(agree):
-            print('Отлично! Тогда выбирайте новое число:')
-            q = max_range()
-            n = random.randint(1, q)
-            continue
+if __name__ == '__main__':
+    print('Добро пожаловать в числовую угадайку!')
+    print('Хотите сыграть? Введите "Да" или "Нет":')
+    agree = input()
+    while agreement(agree) is None:
+        agree = input('Необходимо ввести "Да" или "Нет".\n')
+    if agreement(agree) is False:
+        print('Ничего страшного, вы просто случайно здесь оказались :)')
+    if agreement(agree):
+        print('Хорошо, тогда начнем!')
+        q = max_range()
+        n = random.randint(1, q)
+        while True:
+            game()
+            print('Хотите сыграть еще разок? Введите "Да" или "Нет":')
+            agree = input()
+            while agreement(agree) is None:
+                agree = input('Необходимо ввести "Да" или "Нет".\n')
+            if agreement(agree) is False:
+                print('Спасибо, что играли в числовую угадайку! Всего хорошего :)')
+                break
+            if agreement(agree):
+                print('Отлично! Тогда выбирайте новое число:')
+                q = max_range()
+                n = random.randint(1, q)
+                continue
