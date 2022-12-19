@@ -52,7 +52,7 @@ if __name__ == '__main__':
     agree = input()
     while agreement(agree) is None:
         agree = input('Необходимо ввести "Да" или "Нет".\n')
-    if agreement(agree) is False:
+    if not agreement(agree):
         print('Ничего страшного, вы просто случайно здесь оказались :)')
     if agreement(agree):
         print('Хорошо, тогда начнем!')
@@ -64,7 +64,7 @@ if __name__ == '__main__':
             agree = input()
             while agreement(agree) is None:
                 agree = input('Необходимо ввести "Да" или "Нет".\n')
-            if agreement(agree) is False:
+            if not agreement(agree):
                 print('Спасибо, что играли в числовую угадайку! Всего хорошего :)')
                 break
             if agreement(agree):
