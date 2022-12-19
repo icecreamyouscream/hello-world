@@ -72,4 +72,4 @@ if agreement(agree):
             print('Отлично! Тогда выбирайте новое число:')
             q = max_range()
             n = random.randint(1, q)
-            continu
+            continue
