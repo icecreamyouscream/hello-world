@@ -2,49 +2,74 @@
 
 import random
 
-
-def is_valid(answer):  # функция, проверяющая число ли вводится
-    if answer.isdigit():
-        return 1 <= int(answer) <= right_value
-
-
-def agreement(agree):  # функция проверки ввода Да/Нет
-    return agree.lower() != 'нет' and agree.lower() != 'да'
-
-
 print('Добро пожаловать в числовую угадайку!')
-print('Хотите сыграть? Введите "Да" или "Нет"')
-agree = input()
-while agreement(agree):  # пока вводится неверное значение
-    print('Введите "Да" или "Нет"')
-    agree = input()
-if agree.lower() == 'нет':  # перевод в веденного значения в нижний регистр, чтобы игрок свободно вводил данные
-    print('Ничего страшного, просто вам это не интересно :)')
-while agree.lower() == 'да':
+
+
+def max_range():
     print('До какого числа вы хотите угадывать?')
-    right_value = int(input())  # правый предел рандомного числа
-    n = random.randint(1, right_value)  # задается рандомное число от 1 до введенного игроком правого предела
-    print('Тогда приступим! Введите число:')
-    answer = input()  # считывается введенный ответ
-    counter = 0  # счетчик попыток
-    while is_valid(answer) is False:  # пока вводятся неверные значения
-        answer = input(f'А может быть все-таки введем целое число от 1 до {right_value}?\n')
-    while is_valid(answer):  # пока введено верное значение
-        if int(answer) > n:
-            print('Ваше число больше загаданного, попробуйте еще разок')
-            counter += 1  # счетчик попыток +1
-            answer = input()  # считывается новый ответ
-        elif int(answer) < n:
-            print('Ваше число меньше загаданного, попробуйте еще разок')
-            counter += 1  # счетчик попыток +1
-            answer = input()  # считывается новый ответ
-        elif int(answer) == n:
-            print(f'Вы угадали {counter} попыток, поздравляем!')
-            break
-    print('Хотите сыграть еще разок? Введите "Да" или "Нет":')
-    agree = input()
-    while agreement(agree):
-        print('Введите "Да" или "Нет"')
+    while True:
+        max_value = input()
+        if not max_value.isdigit() or int(max_value) < 2:
+            print('Необходимо ввести целое число больше 1.')
+            continue
+        print(f'Отлично! Отгадываем от 1 до {max_value}!')
+        return int(max_value)
+
+
+def agreement(agree):
+        if agree.lower() == 'да':
+            return True
+        elif agree.lower() == 'нет':
+            return False
+        else:
+            return None
+
+
+def valid_number():
+    while True:
+        num = input(f'Введите число от 1 до {q}:\n')
+        if not num.isdigit() or not 1 <= int(num) <= q:
+            print(f'А может быть все-таки введем целое число от 1 до {q}?\n')
+            continue
+        return int(num)
+
+
+def game():
+    x, counter = 0, 0
+    while x != n:
+        x = valid_number()
+        if x < n:
+            counter += 1
+            print('Вы ввели число меньше загаданного, попробуйте еще разок.')
+            continue
+        elif x > n:
+            counter += 1
+            print('Вы ввели число больше загаданного, попробуйте еще разок.')
+            continue
+    print(f'Поздравляем! Вы угадали загаданное число с {counter} попыток!')
+
+
+print('Хотите сыграть? Введите "Да" или "Нет":')
+agree = input()
+while agreement(agree) is None:
+    agree = input('Необходимо ввести "Да" или "Нет".\n')
+if agreement(agree) is False:
+    print('Ничего страшного, вы просто случайно здесь оказались :)')
+if agreement(agree):
+    print('Хорошо, тогда начнем!')
+    q = max_range()
+    n = random.randint(1, q)
+    while True:
+        game()
+        print('Хотите сыграть еще разок? Введите "Да" или "Нет":')
         agree = input()
-    if agree.lower == 'нет':
-        print('Спасибо, что играли в числовую угадайку!')
+        while agreement(agree) is None:
+            agree = input('Необходимо ввести "Да" или "Нет".\n')
+        if agreement(agree) is False:
+            print('Спасибо, что играли в числовую угадайку! Всего хорошего :)')
+            break
+        if agreement(agree):
+            print('Отлично! Тогда выбирайте новое число:')
+            q = max_range()
+            n = random.randint(1, q)
+            continue
